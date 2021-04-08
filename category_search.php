@@ -28,6 +28,7 @@
       			$img_src = $rows['image_src'];
       			$name = $rows['description'];
       			$price = $rows['price'];
+            $prd_id = $rows['product_id'];
 
       			?>
 

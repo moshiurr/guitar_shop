@@ -11,7 +11,7 @@
 
 <div class="container">
 	
-	<h2 class="header text__center">Explore Guitars</h2>
+	<h2 class="header text__center">Search results for '<?php echo $search ; ?>'</h2>
 
       <?php
 
@@ -24,6 +24,7 @@
             $img_src = $rows['image_src'];
             $name = $rows['description'];
             $price = $rows['price'];
+            $prd_id = $rows['product_id'];
 
             ?>
 
@@ -33,13 +34,22 @@
           <h1><?php echo $name; ?></h1>
           <h4>Price: $<?php echo $price; ?></h4>
           <div class="buy__wrapper text__center">
-            <button class="buy__btn ">Buy Now</button>
+            <form method="POST">
+        			<input type="hidden" name="pr_id" value="<?php echo $prd_id; ?>">
+              		<button class="buy__btn" name="cart">Add to cart</button>
+            	</form>
           </div>
         </div>
 
             <?php
           }
-        }
+        }else {
+            ?>
+            <div style="height: 30em; display: flex; justify-content: center; align-items: center;">
+              <h2 class="text__center">No matching result found..!</h2>
+            </div>
+            <?php
+          }
   ?>
 	<div class="stop__float"></div>
 </div>

@@ -16,6 +16,7 @@
 
       $sql = "INSERT INTO CART_TABLE (user_id, product_id) values ('$u_id', '$product_id')";
       $res = mysqli_query($conn, $sql);
+      // echo "Item Added".$u_id.$product_id;
 
     }else{
       header('location: login.php');

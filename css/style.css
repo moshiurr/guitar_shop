@@ -395,7 +395,6 @@ button {
   opacity: .7;
 }
 
-#3ae374
 /* footer starts here */
   
 .footer__wrapper {
@@ -411,6 +410,7 @@ button {
 .footer__line h5 {
   color: rgba(0,0,0,0.7)
 }
+
 
 .footer__line h3, .footer__line h5 {
   margin-top: 1em;

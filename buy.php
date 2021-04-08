@@ -1,10 +1,36 @@
 <?php include('partials/top_bar.php'); ?>
 
+<?php 
+	if(!isset($_SESSION['user'])){
+    	header('location: index.php');
+  	}
 
+	 if(isset($_POST['confirm'])){
+    	$sql = "SELECT * FROM CART_TABLE WHERE user_id= '$u_id'";
+    	$res = mysqli_query($conn, $sql);
+
+    	$count = mysqli_num_rows($res);
+
+    	if($count>0){
+    		while ($rows = mysqli_fetch_assoc($res)) {
+    			$product_id = $rows['product_id'];
+    			$qry = "UPDATE PRODUCT SET bought = bought + 1 WHERE product_id = '$product_id'";
+
+    			$out_put = mysqli_query($conn, $qry);
+    		}
+    	}
+
+
+    	$sql = "DELETE FROM CART_TABLE WHERE user_id= '$u_id'";
+    	$res = mysqli_query($conn, $sql);
+
+    	header('location: complete.php');
+  	}
+ ?>
 
 <div class="product__wrapper">
 	<div class="container">
-		<h2 style="padding: 2em;">Hey <?php echo $user_name; ?>, Your cart is given below :-</h2>
+		<h2 style="padding: 2em;">Hey <?php echo $user_name; ?>,  Your cart is given below :-</h2>
 
 		<div class="cart_container">
 
@@ -50,7 +76,7 @@
 			</form>
 		</div>';
       		}else{
-      			echo '<div><h2 class="text__center" style="margin-bottom: 1.5em;">You have no item in the cart!</h2></div>';
+      			echo '<div style="height: 30em; display: flex; justify-content: center; align-items: center;"><h2 class="text__center" style="margin-bottom: 1.5em;">You have no item in the cart!</h2></div>';
       		}
 		?>
 		
@@ -58,28 +84,5 @@
 	</div>
 </div>
 
-<?php 
-	 if(isset($_POST['confirm'])){
-    	$sql = "SELECT * FROM CART_TABLE WHERE user_id= '$u_id'";
-    	$res = mysqli_query($conn, $sql);
-
-    	$count = mysqli_num_rows($res);
-
-    	if($count>0){
-    		while ($rows = mysqli_fetch_assoc($res)) {
-    			$product_id = $rows['product_id'];
-    			$qry = "UPDATE PRODUCT SET bought = bought + 1 WHERE product_id = '$product_id'";
-
-    			$out_put = mysqli_query($conn, $qry);
-    		}
-    	}
-
-
-    	$sql = "DELETE FROM CART_TABLE WHERE user_id= '$u_id'";
-    	$res = mysqli_query($conn, $sql);
-
-    	header('location: complete.php');
-  	}
- ?>
 
 <?php include('partials/footer.php'); ?>

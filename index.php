@@ -1,8 +1,30 @@
 <?php include('partials/top_bar.php'); ?>
 
-
+<?php 
+  if(isset($_POST['search'])){
+    $search_text = $_POST['search'];
+    header('location: guitar_search.php?search='.$search_text);
+  }
+ ?>
 
   <!-- nav var ends here -->
+
+  <!-- guitar search starts here -->
+
+<section class="search__wrapper">
+  <div>
+    <div class="search__img" style="background-image: url(./assets/search_2.jpeg); height: 15em; object-fit: fill; display: flex;
+    justify-content: center; align-items: center;" >
+       <form method="POST">
+         <input type="search" name="search" placeholder="Search for guitar..." required style="height: 4em; width: 40em; padding-left: 1em;">
+         <input type="submit" name="submit" value="Search" style="height: 4em; width: 7em; margin-left: 1em; color: white; background-color: black;">
+       </form>
+  </div>  
+    </div>
+   
+</section>
+
+  <!-- guitar search ends here -->
 
   <!-- most popular section start here -->
   <section class="popular__wrapper">
