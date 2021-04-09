@@ -6,6 +6,8 @@
   }
 
   $error = '';
+
+  // this handle the registration of new user
   if(isset($_POST['register'])){
 
     //get data from the form

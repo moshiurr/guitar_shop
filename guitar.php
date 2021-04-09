@@ -5,6 +5,7 @@
     <div class="container">
       <h2 class="header text__center">Explore Guitars</h2>
 
+      <!-- displayng everything from the prduct table -->
       <?php 
         $sql = "SELECT * FROM PRODUCT";
 

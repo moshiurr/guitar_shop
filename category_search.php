@@ -1,5 +1,7 @@
+<!-- includes the header of the website -->
 <?php include('partials/top_bar.php'); ?>
 
+<!-- shows only the selected category from the GET mothod -->
 <?php 
 	if(isset($_GET['category_id'])){
 		$category_id = $_GET['category_id'];
@@ -53,5 +55,5 @@
 	<div class="stop__float"></div>
 </div>
 
-
+<!-- includes the footer of the website -->
 <?php include('partials/footer.php'); ?>

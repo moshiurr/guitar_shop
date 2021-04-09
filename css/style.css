@@ -106,6 +106,15 @@ button {
   color: var(--specColor);
 }
 
+.menu__inverse {
+  color: var(--specColor2);
+  transition: all 0.2s ease-in;
+}
+
+.menu__inverse:hover {
+  color: var(--textColor);
+}
+
 .btn__void {
   height: 2.5em;
   width: 6em;
@@ -128,7 +137,7 @@ button {
 
 .btn__filled:hover {
   background-color: var(--specColor);
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .btn__void:hover {
@@ -288,6 +297,10 @@ button {
   border-radius: 1em;
 }
 
+.login__form label{
+  padding: 0.5em 0 0.5em 0;
+}
+
 .submit__button {
   display: flex;
   justify-content: flex-end;
@@ -395,6 +408,30 @@ button {
   opacity: .7;
 }
 
+/* Buy page style ends here */
+
+.profile {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3em;
+}
+
+.profile__pic{
+  height: 10em;
+  width: 10em;
+}
+
+/* profile page styles starts */
+
+
+
+
+
+/* profile page style ends here */
+
 /* footer starts here */
   
 .footer__wrapper {
@@ -409,6 +446,10 @@ button {
 
 .footer__line h5 {
   color: rgba(0,0,0,0.7)
+}
+
+.footer__line h5:hover {
+  cursor: pointer;
 }
 
 

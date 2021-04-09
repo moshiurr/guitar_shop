@@ -1,13 +1,12 @@
 <?php include('partials/top_bar.php'); ?>
 
-<?php 
+<?php
+	// sending necessary data to the guitar_search page
   if(isset($_POST['search'])){
     $search_text = $_POST['search'];
     header('location: guitar_search.php?search='.$search_text);
   }
  ?>
-
-  <!-- nav var ends here -->
 
   <!-- guitar search starts here -->
 
@@ -31,6 +30,8 @@
     <div class="container">
       <h2 class ="header text__center">Most Popular Item</h2>
 
+
+	<!-- displaying the top 4 most popular item from the product table -->
 	<?php 
       	$sql = "SELECT * FROM PRODUCT ORDER BY bought DESC LIMIT 4";
 
@@ -71,6 +72,9 @@
   </section>
   <!-- most popular end here -->
 
+
+
+
   <!-- categories start here -->
 
   <section class="categories__wrapper">
@@ -78,10 +82,12 @@
       <h2 class ="header text__center">Categories</h2>
 
       <div class="category__container">
-      <?php 
-  	$sql = "SELECT * FROM CATEGORY LIMIT 6";
 
-  	$res = mysqli_query($conn, $sql);
+			<!-- displaying the top 6 categories from all the category -->
+      <?php 
+  			$sql = "SELECT * FROM CATEGORY LIMIT 6";
+
+  			$res = mysqli_query($conn, $sql);
 
       	$count = mysqli_num_rows($res);
 

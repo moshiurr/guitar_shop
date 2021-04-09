@@ -1,6 +1,7 @@
 <?php
   include('connect_db.php');
 
+  //if user logout, remove the session variable
   if(isset($_POST['logout'])){
       if(isset($_SESSION['user'])){
         unset($_SESSION['user']);
@@ -9,6 +10,7 @@
       }
   }
 
+  //insert item into the cart, if user not logged in, redirect to login page
   if(isset($_POST['cart'])){
     if(isset($_SESSION['user'])){
       $product_id = $_POST['pr_id'];
@@ -16,13 +18,13 @@
 
       $sql = "INSERT INTO CART_TABLE (user_id, product_id) values ('$u_id', '$product_id')";
       $res = mysqli_query($conn, $sql);
-      // echo "Item Added".$u_id.$product_id;
 
     }else{
       header('location: login.php');
     }
   }
 
+  //delete item from the cart
   if(isset($_POST['delete'])){
     $product_id = $_POST['pr_id'];
     $u_id = $_SESSION['user_id'];
@@ -32,6 +34,7 @@
     $res = mysqli_query($conn, $sql);
 
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +43,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- css link -->
-  <link rel="stylesheet" href="./css/style.css">
+  <link href="./css/style.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 
   <title>Guitar Shop</title>
 </head>
@@ -77,6 +80,8 @@
         <ul class="nav__item customer__info display__none">
           <li class="user_logout">
 
+
+          <!-- code for showing user name and cart item in navigation bar -->
             <?php 
               if(isset($_SESSION['user'])){
                 $user_name = $_SESSION['user'];
@@ -88,8 +93,8 @@
               } 
             ?>
 
-            <h3>Hi, <?php echo $user_name; ?></h3>
-            <a href="buy.php"><h3 style="padding-left: 1em;">Cart Item(s): <?php echo $total_item; ?></h3></a>
+            <h3>Hi, <a class="menu__inverse" href="./profile.php"><?php echo $user_name; ?></a></h3>
+            <a class="menu" href="buy.php"><h3 style="padding-left: 1em;">Cart Item(s): <span style="color: red;"><?php echo $total_item; ?></span></h3></a>
             <form method="POST">
               <button type="submit" name="logout" class="out__btn">Log out</button>
             </form>
@@ -101,6 +106,7 @@
            <?php 
               if(isset($_SESSION['user'])){
               
+              // few javascript line to toggle the css attribute
               echo "<script> 
                 document.querySelector('.join__us').classList.add('display__none');
                 document.querySelector('.customer__info').classList.toggle('display__none');

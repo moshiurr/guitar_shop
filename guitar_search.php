@@ -1,5 +1,7 @@
 <?php include('partials/top_bar.php'); ?>
 
+
+<!-- getting the user data from the GET method -->
 <?php 
 	if(isset($_GET['search'])){
 		$search = $_GET['search'];
@@ -13,6 +15,8 @@
 	
 	<h2 class="header text__center">Search results for '<?php echo $search ; ?>'</h2>
 
+
+    <!-- displaying the result on the screen -->
       <?php
 
         $res = mysqli_query($conn, $sql);

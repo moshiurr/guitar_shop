@@ -69,7 +69,7 @@
 
 			<?php  
 			      	}
-			      	echo '<div style="display: flex; padding-left: 10em; align-items: center;">
+			      	echo '<div style="display: flex; padding-left: 10em; align-items: center; margin-bottom: 2em;">
 			<h2 style="padding-right: 2em;">Total Price: $' . $total_price . '</h2>
 			<form method="POST">
 				<button name="confirm" class="confirm__btn">confirm purchase</button>

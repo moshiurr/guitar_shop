@@ -7,6 +7,8 @@
   }
   
   $error = '';
+
+  // this handles the login of a existing user
   if(isset($_POST['submit'])){
     
     //get data from the form
